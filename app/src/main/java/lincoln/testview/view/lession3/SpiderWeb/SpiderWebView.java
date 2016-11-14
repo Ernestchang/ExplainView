@@ -94,6 +94,8 @@ public class SpiderWebView extends View {
 
         //TODO OnDraw()被调用2次，问题待查找
 
+        Log.d("ernest","onDraw");
+
 
         drawMutilShape(canvas);
 
@@ -104,7 +106,7 @@ public class SpiderWebView extends View {
 
     //1 绘制单个多边形
     private void drawSingleShape(Canvas canvas) {
-        pathShape.moveTo(centerX + radiu, centerX);
+        pathShape.moveTo(centerX + radiu, centerY);
         for (int index = 0; index < BORDER_COUNT; index++) {
             float x = (float) (centerX + Math.cos(index * mAngel) * radiu);
             float y = (float) (centerY + Math.sin(index * mAngel) * radiu);
@@ -138,7 +140,7 @@ public class SpiderWebView extends View {
         radiu = radiu - each;
 
         for (int index = 0; index < BORDER_COUNT; index++) {
-            pathLine.moveTo(centerX, centerX);
+            pathLine.moveTo(centerX, centerY);
             float x = (float) (centerX + Math.cos(index * mAngel) * radiu);
             float y = (float) (centerY + Math.sin(index * mAngel) * radiu);
             Log.d("lincoln", "drawLine:" + " x:" + x + " y:" + y);
@@ -146,6 +148,8 @@ public class SpiderWebView extends View {
             canvas.drawPath(pathLine, mPaintLine);
         }
         //TODO 解决2次绘制的bug
+        Log.d("ernest","onDraw"+"drawLine");
+
         radiu = Math.min(width, height) / 2;
     }
 

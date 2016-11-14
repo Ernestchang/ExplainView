@@ -64,7 +64,7 @@ public class PaintView extends View {
             PieData pieData =list.get(index);
             mPaint.setColor(getResources().getColor(pieData.color));
             //3 根据角度确定绘制弧度
-            canvas.drawArc(rectF,currentAngle,pieData.angle,true,mPaint);
+            canvas.drawArc(rectF,currentAngle,pieData.angle,false,mPaint);
             currentAngle = currentAngle+pieData.angle;
         }
 
@@ -73,6 +73,6 @@ public class PaintView extends View {
     //填充数据，更新View
     public void setData(List<PieData> list){
         this.list = list;
-        invalidate();
+        postInvalidate();
     }
 }
